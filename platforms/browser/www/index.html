@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"
+  />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <title>Hello World</title>
+</head>
+
+<body>
+  <div class="app">
+    <h1>PhoneGap</h1>
+    <input type="button" value="alert8" id="btn1">
+    <input type="button" value="confirm" id="btn2">
+    <input type="button" value="beep" id="btn3">
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script>
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var btn3 = document.getElementById('btn3');
+
+    document.addEventListener('deviceready', function () {
+
+      btn1.onclick = function () {
+        navigator.notification.alert(
+          '消息',
+          function () {
+            alert('用户确认后要去做的事')
+          },
+          '标题',
+          '按钮文字'
+        );
+      }
+      btn2.onclick = function () {
+        navigator.notification.confirm(
+          '消息',
+          function (n) {
+            alert('用户选择后要去做的事'+n)
+          },
+          '标题',
+          '确认,取消'
+        );
+      }
+      btn3.onclick = function () {
+        navigator.notification.beep(1);
+      }
+
+    }, false);
+
+
+
+  </script>
+</body>
+
+</html>
